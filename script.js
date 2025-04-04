@@ -1,4 +1,6 @@
 const myLibrary = [];
+const bookGrid = document.querySelector("div");
+document.body.appendChild(bookGrid);
 
 function Book(title, author, pages, read) {
     if (!new.target) {
@@ -11,17 +13,28 @@ function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
     this.info = function() {
         return(this.title + " by " + this.author + ", " + this.pages +
-        ", " + this.read + " id " + this.id)
+        ", " + this.read)
+    };
+    this.idInfo = function() {
+        return(this.id)
     };
 }
 
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkein", "295 pages", "not read yet");
-const theBobbit = new Book("The Bobbit", "J.R.R. Tolkein", "295 pages", "not read yet");
-console.log(theHobbit.info());
-console.log(theBobbit.info());
-console.log(theBobbit.info());
-
-function addBookToLibrary() {
+function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
 
+    const thisBook = (myLibrary.length - 1); //last item of array
+    const thisBookDiv = document.createElement("div");
+    thisBookDiv.classList.add(myLibrary[thisBook].idInfo()); //unique ID
+    thisBookDiv.textContent = (myLibrary[thisBook].info() + " -- ID is: " +
+                                myLibrary[thisBook].idInfo())
+    bookGrid.appendChild(thisBookDiv);
 }
+
+addBookToLibrary("Book One", "A. Author", "6 pages", "read");
+addBookToLibrary("Book Two", "A. Author", "11 pages", "not read yet");
+addBookToLibrary("Book Three", "B. Author", "77 pages", "read");
+
+console.log(myLibrary[0].info());
+console.log(myLibrary[0].idInfo());

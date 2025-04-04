@@ -1,3 +1,27 @@
 * {
-    background-color: rgb(00, 50, 50, 0.5);
+    background-color: rgba(88, 99, 99, 0.2);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-weight: 550;
+    background-color: rgba(150, 150, 100, 0.9);
+    max-width: 50%;
+    min-width: 25%;
+}
+
+div {
+    display: grid;
+    background-color: rgb(200, 200, 150);
+    border: 1px dotted red;
+    min-width: 100px;
+    max-width: 150px;
+    min-height: 100px;;
+    max-height: 150px;;
 }
