@@ -23,14 +23,16 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
-
-    const thisBook = (myLibrary.length - 1); //last item of array
-    const thisBookDiv = document.createElement("div");
-    thisBookDiv.classList.add(myLibrary[thisBook].idInfo()); //unique ID
-    thisBookDiv.textContent = (myLibrary[thisBook].info() + " -- ID is: " +
-                                myLibrary[thisBook].idInfo())
-    bookGrid.appendChild(thisBookDiv);
 }
+
+function displayLibrary() {
+    myLibrary.forEach(book => {
+        thisBookDiv = document.createElement("div");
+        thisBookDiv.textContent = book.info() + " --ID-- " + book.idInfo();
+        bookGrid.appendChild(thisBookDiv);
+    });
+}
+displayLibrary();
 
 addBookToLibrary("Book One", "A. Author", "6 pages", "read");
 addBookToLibrary("Book Two", "A. Author", "11 pages", "not read yet");
