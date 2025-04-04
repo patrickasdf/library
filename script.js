@@ -1,5 +1,5 @@
 const myLibrary = [];
-const bookGrid = document.querySelector("div");
+const bookGrid = document.querySelector(".grid-container");
 document.body.appendChild(bookGrid);
 
 function Book(title, author, pages, read) {
@@ -28,15 +28,17 @@ function addBookToLibrary(title, author, pages, read) {
 function displayLibrary() {
     myLibrary.forEach(book => {
         thisBookDiv = document.createElement("div");
+        thisBookDiv.classList.add("grid-item");
         thisBookDiv.textContent = book.info() + " --ID-- " + book.idInfo();
         bookGrid.appendChild(thisBookDiv);
     });
 }
-displayLibrary();
 
 addBookToLibrary("Book One", "A. Author", "6 pages", "read");
 addBookToLibrary("Book Two", "A. Author", "11 pages", "not read yet");
 addBookToLibrary("Book Three", "B. Author", "77 pages", "read");
+
+displayLibrary();
 
 console.log(myLibrary[0].info());
 console.log(myLibrary[0].idInfo());
