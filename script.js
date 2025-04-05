@@ -38,7 +38,10 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayLibrary() {
-    myLibrary.forEach(book => {
+    while (bookGrid.firstChild) {
+        bookGrid.removeChild(bookGrid.firstChild);
+    }
+    myLibrary.map(book => {
         thisBookDiv = document.createElement("div");
         thisBookDiv.classList.add("grid-item");
         thisBookDiv.textContent = book.info() + " --ID-- " + book.idInfo();
@@ -50,7 +53,26 @@ addBookToLibrary("Book One", "A. Author", "6 pages", "read");
 addBookToLibrary("Book Two", "A. Author", "11 pages", "not read yet");
 addBookToLibrary("Book Three", "B. Author", "77 pages", "read");
 
-displayLibrary();
 
-console.log(myLibrary[0].info());
-console.log(myLibrary[0].idInfo());
+
+const submitBook = document.querySelector("dialog form button");
+
+submitBook.addEventListener("click", submitClick, false);
+
+function submitClick(event) {
+    event.preventDefault();
+    const formTitle = document.forms["bookForm"]["title"].value;
+    console.log("title " + formTitle)
+    const formAuthor = document.forms["bookForm"]["author"].value;
+    console.log("author " + formAuthor);
+    const formPages = document.forms["bookForm"]["pages"].value + " pages";
+    console.log("pages " + formPages);
+    const formRead = document.forms["bookForm"]["read"].value;
+    console.log("read? " + formRead);
+    addBookToLibrary(toString(formTitle), toString(formAuthor), toString(formPages));
+    dialog.close();
+    displayLibrary();
+}
+
+
+displayLibrary();
