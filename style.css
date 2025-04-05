@@ -1,25 +1,57 @@
 * {
-    background-color: rgba(88, 99, 99, 0.2);
+    /* background-color: rgba(88, 99, 99, 0.2); */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* body {
+body { 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+} 
 
 button {
     font-weight: 550;
-    background-color: rgba(150, 150, 100, 0.9);
-    max-width: 50%;
-    min-width: 25%;
-    min-height: 10%;
-    max-height: 25%;;
+    font-size: 1rem;
+    background-color: rgba(235, 235, 120, 0.9);
+    min-height: 35px;
+    min-width: 100px;
+    margin-top: 6px;
 }
 
-div {
-    background-color: rgb(200, 200, 150);
+.book-form {
+    margin: 1em auto;
+    background-color: white;
+    padding: 0.5em;
+    width: 100%;
+    max-width: 80%;
+    border: 1px dotted red;
+}
+
+label, input {
+    display: block;
+    width: 100%;
+}
+
+p {
+    padding-bottom: 1em;
+}
+
+input {
+    padding: 0.5em;
+    border: 1px solid #666;
+    border-radius: 6px;
+}
+
+input[type="radio"] {
+    display: block;
+}
+
+dialog {
+    min-width: 350px;
+    max-width: 50%
 }
 
 .grid-container {
@@ -27,14 +59,17 @@ div {
     resize: both;
     gap: 4px; 
     padding: 4px;
+    margin-left: 6px;
+    margin-right: 6px;
     grid-template-rows: repeat(1, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     border: 1px dotted red;
 }
 
 .grid-item {
-    background-color: #999;
     text-align: center;
+    background-color: rgb(230, 230, 150);
+    border: 2px dotted blue;
     font-size: 1.1rem;
-    padding: 8px;
+    padding: 10px;
 }

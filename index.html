@@ -8,7 +8,28 @@
     <title>Books</title>
 </head>
 <body>
+    <dialog>
+        <button autofocus>Close</button>
+        <div class="book-form">
+            <label for="text">Title</label>
+            <input id="title" name="title" type="text"
+                placeholder="The Hobbit"/><br>
+            <label for="text">Author</label>
+            <input id="author" name="author" type="text"
+                placeholder="J. R. R. Tolkein"/><br>
+            <label for="text">Pages</label>
+            <input id="pages" name="pages" type="text"
+                placeholder="793"/><br>
+            <p>Have you read this book?</p>
+            <input id="readYes" name="readStatus" type="radio"
+                value="read" checked/>
+            <label for="read">Yes</label>
+            <input id="readNo" name="readStatus" type="radio"
+                value="not read"/>
+            <label for="not read">Not yet</label>
+        </div>
+    </dialog>
     <button class="btnBook">New Book</button>
     <div class="grid-container"></div>
 </body>
-</html>
+</html> 

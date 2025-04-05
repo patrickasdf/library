@@ -2,6 +2,18 @@ const myLibrary = [];
 const bookGrid = document.querySelector(".grid-container");
 document.body.appendChild(bookGrid);
 
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("dialog + button");
+const closeButton = document.querySelector("dialog button");
+
+showButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+    dialog.close();
+});
+
 function Book(title, author, pages, read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call contstructor");
