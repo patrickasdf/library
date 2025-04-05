@@ -9,24 +9,27 @@
 </head>
 <body>
     <dialog>
-        <button class="closeDialog" autofocus>Close</button>
+        <button class="close-dialog" autofocus>Close</button>
         <div class="book-form">
-            <label for="text">Title</label>
-            <input id="title" name="title" type="text"
-                placeholder="The Hobbit"/><br>
-            <label for="text">Author</label>
-            <input id="author" name="author" type="text"
-                placeholder="J. R. R. Tolkein"/><br>
-            <label for="text">Pages</label>
-            <input id="pages" name="pages" type="text"
-                placeholder="793"/><br>
-            <p>Have you read this book?</p>
-            <input id="readYes" name="readStatus" type="radio"
-                value="read" checked/>
-            <label for="read">Yes</label>
-            <input id="readNo" name="readStatus" type="radio"
-                value="not read"/>
-            <label for="not read">Not yet</label>
+            <form name="bookForm" action="#" method="post">
+                <label for="title">Title</label>
+                <input id="title" name="title" type="text"
+                    placeholder="The Hobbit"/><br>
+                <label for="author">Author</label>
+                <input id="author" name="author" type="text"
+                    placeholder="J. R. R. Tolkein"/><br>
+                <label for="pages">Pages</label>
+                <input id="pages" name="pages" type="tel"
+                    placeholder="793"/><br>
+                <p>Have you read this book?</p>
+                <input id="readYes" name="read" type="radio"
+                    value="read" checked/>
+                <label for="read">Yes</label>
+                <input id="readNo" name="read" type="radio"
+                    value="not read yet"/>
+                <label for="read">Not yet</label>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </dialog>
     <button class="btnBook">New Book</button>

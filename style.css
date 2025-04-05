@@ -1,5 +1,4 @@
 * {
-    /* background-color: rgba(88, 99, 99, 0.2); */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -19,6 +18,22 @@ button {
     min-height: 35px;
     min-width: 100px;
     margin-top: 6px;
+}
+
+button.remove-button, button.toggle-read {
+    font-size: 400;
+    color: rgb(255, 70, 80);
+    border: 1px solid black;
+    padding: 4px;
+    min-height: 1rem;
+    min-width: auto;
+    font-size: 0.8rem;
+    display: block;
+    justify-self: center;
+}
+
+button.toggle-read {
+    color: rgb(5, 136, 81);
 }
 
 .book-form {
@@ -54,6 +69,11 @@ dialog {
     max-width: 50%
 }
 
+.close-dialog {
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
 .grid-container {
     display: grid;
     resize: both;
@@ -61,9 +81,8 @@ dialog {
     padding: 4px;
     margin-left: 6px;
     margin-right: 6px;
-    grid-template-rows: repeat(1, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    border: 1px dotted red;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .grid-item {

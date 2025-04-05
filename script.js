@@ -32,6 +32,13 @@ function Book(title, author, pages, read) {
     };
 }
 
+ Book.prototype.readStatus = function() {
+    if (this.read = "read") {
+        return this.read = "not read yet";
+    }
+    return this.read = "read";
+ };
+
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
@@ -41,19 +48,39 @@ function displayLibrary() {
     while (bookGrid.firstChild) {
         bookGrid.removeChild(bookGrid.firstChild);
     }
-    myLibrary.map(book => {
+    myLibrary.forEach(book => {
+        //Display library
         thisBookDiv = document.createElement("div");
         thisBookDiv.classList.add("grid-item");
-        thisBookDiv.textContent = book.info() + " --ID-- " + book.idInfo();
+        thisBookDiv.textContent = book.info();
         bookGrid.appendChild(thisBookDiv);
+        //Attach remove button to items
+        thisBookButton = document.createElement("button");
+        thisBookButton.classList.add("grid-item");
+        thisBookButton.classList.add("remove-button");
+        thisBookButton.indexNumber = book.idInfo();
+        console.log(thisBookButton.indexNumber);
+        thisBookButton.textContent = "Remove";
+        thisBookDiv.appendChild(thisBookButton);
+        thisBookButton.addEventListener("click", buttonRemove, false);
+        //Attach read status toggle button
+        thisBookToggle = document.createElement("button");
+        thisBookToggle.classList.add("grid-item");
+        thisBookToggle.classList.add("toggle-read");
+        thisBookToggle.textContent = "Toggle Read";
+        thisBookDiv.appendChild(thisBookToggle);
+        thisBookToggle.addEventListener("click", toggleRead, false);
     });
 }
 
-addBookToLibrary("Book One", "A. Author", "6 pages", "read");
-addBookToLibrary("Book Two", "A. Author", "11 pages", "not read yet");
-addBookToLibrary("Book Three", "B. Author", "77 pages", "read");
+function buttonRemove() {
+    bookGrid.removeChild(thisBookDiv);
+}
 
-
+function toggleRead() {
+    console.log(bookGrid.this);
+    console.log(this);
+}
 
 const submitBook = document.querySelector("dialog form button");
 
@@ -62,17 +89,14 @@ submitBook.addEventListener("click", submitClick, false);
 function submitClick(event) {
     event.preventDefault();
     const formTitle = document.forms["bookForm"]["title"].value;
-    console.log("title " + formTitle)
     const formAuthor = document.forms["bookForm"]["author"].value;
-    console.log("author " + formAuthor);
     const formPages = document.forms["bookForm"]["pages"].value + " pages";
-    console.log("pages " + formPages);
     const formRead = document.forms["bookForm"]["read"].value;
-    console.log("read? " + formRead);
-    addBookToLibrary(toString(formTitle), toString(formAuthor), toString(formPages));
+    addBookToLibrary((formTitle), (formAuthor), (formPages), (formRead));
     dialog.close();
     displayLibrary();
 }
 
-
+addBookToLibrary("AA", "BB", "121 pages", "read");
+addBookToLibrary("BB", "CC", "121 pages", "not read yet");
 displayLibrary();
