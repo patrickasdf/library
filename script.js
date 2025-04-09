@@ -52,12 +52,14 @@ function displayLibrary() {
         //Display library
         thisBookDiv = document.createElement("div");
         thisBookDiv.classList.add("grid-item");
+        thisBookDiv.classList.add(book.idInfo());
         thisBookDiv.textContent = book.info();
         bookGrid.appendChild(thisBookDiv);
         //Attach remove button to items
         thisBookButton = document.createElement("button");
         thisBookButton.classList.add("grid-item");
         thisBookButton.classList.add("remove-button");
+        thisBookButton.classList.add(book.idInfo());
         thisBookButton.indexNumber = book.idInfo();
         console.log(thisBookButton.indexNumber);
         thisBookButton.textContent = "Remove";
@@ -74,7 +76,8 @@ function displayLibrary() {
 }
 
 function buttonRemove() {
-    bookGrid.removeChild(thisBookDiv);
+    const thisElement = document.getElementsByClassName(this.indexNumber);
+    bookGrid.removeChild(thisElement[0]);
 }
 
 function toggleRead() {
