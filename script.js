@@ -33,10 +33,9 @@ function Book(title, author, pages, read) {
 }
 
  Book.prototype.readStatus = function() {
-    if (this.read = "read") {
+    if (this.read == "read") {
         return this.read = "not read yet";
-    }
-    return this.read = "read";
+    } else return this.read = "read";
  };
 
 function addBookToLibrary(title, author, pages, read) {
@@ -55,35 +54,49 @@ function displayLibrary() {
         thisBookDiv.classList.add(book.idInfo());
         thisBookDiv.textContent = book.info();
         bookGrid.appendChild(thisBookDiv);
-        //Attach remove button to items
-        thisBookButton = document.createElement("button");
-        thisBookButton.classList.add("grid-item");
-        thisBookButton.classList.add("remove-button");
-        thisBookButton.classList.add(book.idInfo());
-        thisBookButton.indexNumber = book.idInfo();
-        console.log(thisBookButton.indexNumber);
-        thisBookButton.textContent = "Remove";
-        thisBookDiv.appendChild(thisBookButton);
-        thisBookButton.addEventListener("click", buttonRemove, false);
-        //Attach read status toggle button
-        thisBookToggle = document.createElement("button");
-        thisBookToggle.classList.add("grid-item");
-        thisBookToggle.classList.add("toggle-read");
-        thisBookToggle.textContent = "Toggle Read";
-        thisBookDiv.appendChild(thisBookToggle);
-        thisBookToggle.addEventListener("click", toggleRead, false);
+        //Add Remove and Toggle Read buttons
+        addButtons(book);
+    });
+}
+
+function addButtons(thisItem) {
+    //Find ID
+    const bookID = thisItem.idInfo();
+    //Remove
+    const newButtonRemove = document.createElement("button");
+    newButtonRemove.classList.add("grid-item");
+    newButtonRemove.classList.add("remove-button");
+    newButtonRemove.classList.add(bookID);
+    newButtonRemove.indexNumber = bookID;
+    newButtonRemove.textContent = "Remove";
+    thisBookDiv.appendChild((newButtonRemove));
+    newButtonRemove.addEventListener("click", buttonRemove, false);
+    //Toggle
+    const newButtonToggle = document.createElement("button");
+    newButtonToggle.classList.add("grid-item");
+    newButtonToggle.classList.add("toggle-read");
+    newButtonToggle.classList.add(bookID);
+    newButtonToggle.indexNumber = bookID;
+    newButtonToggle.textContent = "Toggle Read";
+    thisBookDiv.appendChild(newButtonToggle);
+    newButtonToggle.addEventListener("click", () => {
+        //const thisElement = document.getElementsByClassName(bookID);
+        thisItem.readStatus();
+        addButtons(thisBookDiv);
     });
 }
 
 function buttonRemove() {
     const thisElement = document.getElementsByClassName(this.indexNumber);
     bookGrid.removeChild(thisElement[0]);
+    console.log(myLibrary);
 }
 
-function toggleRead() {
-    console.log(bookGrid.this);
-    console.log(this);
-}
+// function toggleRead() {
+//     console.log(myLibrary);
+//     const thisToggle = document.getElementsByClassName(this.indexNumber);
+//     console.log(thisToggle[0].textContent.split("RemoveToggle Read"));
+// }
 
 const submitBook = document.querySelector("dialog form button");
 
